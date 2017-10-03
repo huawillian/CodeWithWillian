@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="my-footer">
+  <template>
+    <style>
+      #footer {
+        padding-top: 6%;
+        padding-bottom: 3%;
+        background-color: #101010;
+        color:white;
+        min-height: 120px;
+        width: 70%;
+        text-align: center;
+        padding-left: 15%;
+        padding-right: 15%;
+        font-size:12px;
+        margin-top: -75px;
+      }
+    </style>
+
+    <div id="footer">
+      <img src="[[importPath]]images/logo.png" alt="Willian Hua Logo"  height="45px" width="200px" >
+      <br>
+      <br>
+      <p> This website was created using the following technologies: HTML, CSS, Javascript, Node.js, bower, Polymer, Firebase, Soundcloud API, and select polymer-components found on customelements.io. I welcome all feedback. For more information, you may email me at: </p> <p> huawillian@gmail.com </p>
+      <p> Web graphic by <a href="http://www.flaticon.com/authors/freepik">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a> </p>
+      <br>
+    </div>
+  </template>
+
+  <script>
+    class MyFooter extends Polymer.Element {
+      static get is() { return 'my-footer'; }
+      static get properties() { return {}; }
+    }
+    window.customElements.define(MyFooter.is, MyFooter);
+  </script>
+</dom-module>

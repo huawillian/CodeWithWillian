@@ -1,0 +1,69 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="./my-layout.html">
+<link rel="import" href="./my-landing-section.html">
+<link rel="import" href="./my-content-section.html">
+<link rel="import" href="./about-content.html">
+<link rel="import" href="./developer-content.html">
+<link rel="import" href="./music-content.html">
+<link rel="import" href="./resume-content.html">
+<link rel="import" href="./home-content.html">
+<link rel="import" href="./browse-content.html">
+
+<dom-module id="codewithwillian-app">
+  <template>
+    <style> </style>
+
+    <!-- app-location binds to the app's URL -->
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+
+    <!-- this app-route manages the top-level routes -->
+    <app-route route="{{route}}" pattern="/:view" data="{{routeData}}" tail="{{subroute}}"> </app-route>
+
+    <my-layout id="myLayout">
+      <iron-pages selected="[[routeData.view]]" attr-for-selected="name" fallback-selection="default">
+        <home-content name=""> </home-content>
+        <home-content name="default"> </home-content>
+        <home-content name="home"> </home-content>
+        <about-content name="about"> </about-content>
+        <developer-content name="developer"> </developer-content>
+        <music-content name="music"> </music-content>
+        <resume-content name="resume"> </resume-content>
+        <browse-content name="browse" route="[[subroute]]"> </browse-content>
+      </iron-pages>
+
+    </my-layout>
+  </template>
+
+  <script>
+    class CodewithwillianApp extends Polymer.Element {
+      static get is() { return 'codewithwillian-app'; }
+
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'codewithwillian-app'
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routeChanged(route.*)'
+        ]
+      }
+
+      _routeChanged(changeRecord) {
+        window.scrollTo(0, 0);
+        this.$.myLayout.closeLeftDrawer();
+        this.$.myLayout.closeRightDrawer();
+      }
+    }
+
+    window.customElements.define(CodewithwillianApp.is, CodewithwillianApp);
+  </script>
+</dom-module>

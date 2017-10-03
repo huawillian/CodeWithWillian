@@ -1,0 +1,107 @@
+<dom-module id="browse-card-styles">
+  <template>
+    <style>
+    :host {
+
+    }
+
+    h2 {
+      color: white;
+      font-weight:200;
+      font-family: 'Open Sans', sans-serif;
+      padding-top: 0%;
+      padding-bottom: 0%;
+    }
+
+    h5 {
+      color: white;
+      font-weight:300;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 600px){
+      paper-card {
+        height:44vw;
+        width:44vw;
+      }
+
+      h2 {
+        font-size: 4vw;
+      }
+
+      h5 {
+        font-size: 2.5vw;
+      }
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 968px){
+      paper-card {
+        height:29vw;
+        width:29vw;
+      }
+
+      h2 {
+        font-size: 3vw;
+      }
+
+      h5 {
+        font-size: 2vw;
+      }
+
+    }
+
+    @media only screen and (min-width: 968px) {
+      paper-card {
+        height:22vw;
+        width:22vw;
+      }
+
+      h2 {
+        font-size: 2.5vw;
+      }
+
+      h5 {
+        font-size: 1.5vw;
+      }
+    }
+
+    paper-card {
+      background-size: cover; 
+      background-repeat: no-repeat;
+      text-align: center;
+      border-style: ridge;
+      border-color: #999;
+      filter:brightness(95%);
+      position:relative;
+      margin:0;
+      border-width: 0;
+      margin-right: 0.5vw;
+      margin-left: 0.5vw;
+      margin-bottom: 1vw;
+    }
+
+    #card:hover {
+      filter:brightness(130%);
+      cursor:pointer;
+    }
+
+    .blur {
+      background-image:url('http://lorempixel.com/output/abstract-q-c-640-480-6.jpg');
+      background-size:cover;
+      background-repeat: no-repeat;
+      filter: brightness(50%) blur(1px);
+      
+      position:absolute;
+      width:100%;
+      height:100%;
+      margin: 0;
+      padding: 0;
+      z-index: -1;
+    }
+
+    .card-content {
+      padding: 5px;
+    }
+    </style>
+  </template>
+</dom-module>

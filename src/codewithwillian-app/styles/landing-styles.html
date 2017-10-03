@@ -1,0 +1,105 @@
+<dom-module id="landing-styles">
+  <template>
+    <style>
+      :host {
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      #mainContent {
+        padding-top: 64px;
+      }
+
+      #backgroundImage {
+        width: 100vw;
+        height: 120vh;
+        background-color: lightgray;
+        position: fixed;
+        z-index: -10;
+        filter: saturate(250%) brightness(30%);
+        top: 0;
+      }
+
+      #landingContent {
+        width: 100%;
+        color: white;
+        text-align: center;
+        height: 80vh;
+        z-index: -1;
+      }
+
+      #landingTitle {
+        font-size: 30pt;
+        padding-left: 25vw;
+        padding-right: 25vw;
+        z-index: -1;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+      }
+
+      #landingSubtitle {
+        margin-top: 5vh;
+        font-size: 15pt;
+        margin-bottom: 30vh;
+        padding-left: 25vw;
+        padding-right: 25vw;
+        z-index: -1;
+        font-weight: 300;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      #landingContainer {
+        position: relative;
+        top: 50%;
+        transform: perspective(1px) translateY(-50%);
+        z-index: -1;
+      }
+
+      #expandButton {
+        background-color: white;
+        border-radius: 50%;
+        --paper-icon-button: {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      #expandContainer {
+        width:100%;
+        text-align: center;
+        position: absolute;
+        margin-top: -30px;
+        z-index: 0;
+      }
+
+    @media only screen and (min-width: 0px) and (max-width: 600px){
+      #landingTitle {
+        font-size: 7vw;
+      }
+
+      #landingSubtitle  {
+        font-size: 3.5vw;
+      }
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 968px){
+      #landingTitle {
+        font-size: 5.5vw;
+      }
+
+      #landingSubtitle  {
+        font-size: 2.25vw;
+      }
+    }
+
+    @media only screen and (min-width: 968px) {
+      #landingTitle {
+        font-size: 4vw;
+      }
+
+      #landingSubtitle  {
+        font-size: 1.6vw;
+      }
+    }
+    </style>
+  </template>
+</dom-module>

@@ -1,0 +1,28 @@
+[debug] [2017-10-03T07:14:14.130Z] ----------------------------------------------------------------------
+[debug] [2017-10-03T07:14:14.133Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2017-10-03T07:14:14.133Z] CLI Version:  3.9.1
+[debug] [2017-10-03T07:14:14.133Z] Platform:     linux
+[debug] [2017-10-03T07:14:14.133Z] Node Version: v6.10.3
+[debug] [2017-10-03T07:14:14.133Z] Time:         Tue Oct 03 2017 03:14:14 GMT-0400 (EDT)
+[debug] [2017-10-03T07:14:14.133Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-03T07:14:14.145Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-03T07:14:14.145Z] > authorizing via signed-in user
+[debug] [2017-10-03T07:14:14.148Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/huawillianpolymer  
+ Tue Oct 03 2017 03:14:14 GMT-0400 (EDT)
+[debug] [2017-10-03T07:14:14.694Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-03T07:14:14.697Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/huawillianpolymer/tokens  
+ Tue Oct 03 2017 03:14:14 GMT-0400 (EDT)
+[debug] [2017-10-03T07:14:15.278Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/huawillian/Desktop/website2'...
+[info] 
+[debug] [2017-10-03T07:14:15.281Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/huawillianpolymer  
+ Tue Oct 03 2017 03:14:15 GMT-0400 (EDT)
+[debug] [2017-10-03T07:14:15.621Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-03T07:14:15.622Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/232055847284/clients/_:getWebAppConfig  
+ Tue Oct 03 2017 03:14:15 GMT-0400 (EDT)
+[debug] [2017-10-03T07:14:16.098Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build/es6-unbundled
+[info] ✔  hosting: Local server: http://localhost:5000
+

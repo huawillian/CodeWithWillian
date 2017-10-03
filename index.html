@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title> Willian Hua</title>
+    <meta name="description" content="Welcome to my personal website! This website was made with NodeJS, Polymer, and Firebase. Browse my music and my projects. ">
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/polymer-website.appspot.com/o/logoOnly1.png?alt=media&token=4c0c6045-165d-429e-8bea-4a3f13dffabe">
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="/src/codewithwillian-app/codewithwillian-app.html">
+    <link rel="import" href="/bower_components/polymerfire/firebase-app.html">
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  </head>
+
+  <body style="margin: 0; font-family: 'Open Sans', sans-serif;">
+    <codewithwillian-app></codewithwillian-app>
+      <firebase-app
+        auth-domain="polymer-website.firebaseapp.com"
+        database-url="https://polymer-website.firebaseio.com/"
+        api-key="AIzaSyClTOB1bWE5-bH2cPvtpLf9McqlBwuQFgY"
+      </firebase-app>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<dom-module id="home-styles">
+  <template>
+    <style>
+      #bodyContent {
+        color: white;
+        background-color: black;
+        width: 100%;
+        min-height: 1000px;
+        z-index: -2;
+      }
+      
+      .main-content-img {
+        width:100%;
+      }
+
+      .main-content-p {
+        font-weight: 300;
+        line-height: 160%;
+       }
+       
+      h1 {
+        font-size: 4.5vw;
+      }
+
+      h3 {
+        font-size: 1.6vw;
+      }
+
+      h1, h3 {
+        text-align: justify;
+        color:white;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        font-weight: 300;
+        line-height: 140%;
+      }
+
+      h2 {
+        font-weight: 300;
+        line-height: 160%;
+        color:white;
+        text-align: center;
+      }
+
+      h5 {
+        font-weight: 300;
+        line-height: 160%;
+        color:white;
+        text-align: justify;
+        margin-bottom: 15px;
+        font-size: 1.3vw;
+      }
+
+    
+    #profileContainer {
+      padding: 40pt 15vw;
+      width:68vw;
+      display: flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+    }
+
+    #cardContainer {
+      width:100%;
+      background-color:black;
+      display: flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      margin-top: 20pt;
+      margin-bottom: 20pt;
+    }
+
+    .profileItems {
+      width:34vw;
+    }
+
+    .cardItems {
+      width:30%;
+      min-height: 30vh;
+      padding: 0vw;
+      margin-right: 1vw;
+      margin-left: 1vw;
+
+    }
+
+    .cardIcons {
+      background-color: #E65100;
+      border-radius: 50%;
+      width:9vw;
+      height: 9vw;
+      color:white;
+      margin-top: 10px;
+    }
+
+    .cardIcons:hover {
+      background-color: #F98433;
+    }
+
+    .cards {
+      width: 100%;
+      margin:5%;
+      min-height:100px;
+      text-align: center;
+    }
+
+    #profilepic1 {
+      max-height:80vh;
+      width:75%;
+      margin-top: 5vw;
+    }
+    #profilepic2 {
+      height: 0vh;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 600px){
+      #profileContainer {
+        padding-top:5vw;
+        padding-bottom:2vw;
+        padding-left:2vw;
+        padding-right:2vw;
+        width:94vw;
+      } 
+      .profileItems {
+        width:94vw;
+      }
+      h1 {
+        font-size: 7vw;
+      }
+      h3 {
+        font-size: 3.5vw;
+      }
+      h5 {
+        font-size: 4vw;
+      }
+      #profilepic1 {
+        height: 0vh;
+      }
+      #profilepic2 {
+        height: 50vh;
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+      }
+
+      #cardContainer {
+        padding-top:5vw;
+        padding-bottom:5vw;
+        padding-left:0vw;
+        margin-left: -1vw;
+        padding-right:2vw;
+        width:88vw;
+      }
+
+      .cardItems {
+        width:95%;
+      }
+
+      .cardIcons {
+        width:25vw;
+        height: 25vw;
+      }
+
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 968px){
+      #profileContainer {
+        padding-top:4vw;
+        padding-bottom:4vw;
+        padding-left:4vw;
+        padding-right:4vw;
+        width:90vw;
+      } 
+      .profileItems {
+        width:44vw;
+      }
+      h1 {
+        font-size: 5.5vw;
+      }
+      h3 {
+        font-size: 2.25vw;
+      }
+      h5 {
+        font-size: 2.5vw;
+      }
+      .cardIcons {
+        width:12vw;
+        height: 12vw;
+      }
+
+      .cardItems {
+        width:46%;
+      }
+    }
+    </style>
+  </template>
+</dom-module>

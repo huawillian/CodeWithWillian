@@ -1,0 +1,123 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/social-media-icons/social-media-icons.html">
+
+<link rel="import" href="./my-footer.html">
+<link rel="import" href="./styles/layout-styles.html">
+
+<dom-module id="my-layout">
+  <template>
+    <style include="layout-styles"> </style>
+    <style> </style>
+
+    <!-- Toolbar -->
+    <app-header fixed style="z-index: 1">
+      <app-toolbar>
+        <paper-icon-button class="toolbarButton" icon="menu" on-tap="toggleLeftDrawer"></paper-icon-button>
+        <div main-title id="logoContainer" style="text-align: center">
+          <iron-image id="logo" style="width:200px; height:45px;" sizing="cover" src="[[importPath]]images/logo.png"></iron-image>
+        </div>
+        <paper-icon-button class="toolbarButton" icon="perm-identity" on-tap="toggleRightDrawer"></paper-icon-button>
+      </app-toolbar>
+    </app-header>
+
+    <!-- Left Drawer-->
+    <app-drawer id="leftdrawer" swipe-open> 
+      <paper-listbox selected="0" style="height: 100%; overflow: auto; padding: 15px;">
+        <paper-item class="drawerItem" on-tap="navigateHome"> 
+          <iron-icon class="drawerIcon" icon="home"></iron-icon> HOME 
+        </paper-item>
+        <paper-item class="drawerItem" on-tap="navigateAbout">
+          <iron-icon class="drawerIcon" icon="account-circle"></iron-icon> ABOUT
+        </paper-item>
+        <paper-item class="drawerItem" on-tap="navigateDeveloper">
+          <iron-icon class="drawerIcon" icon="code"></iron-icon> DEVELOPER
+        </paper-item>
+        <paper-item class="drawerItem" on-tap="navigateMusic">
+          <iron-icon class="drawerIcon" icon="image:music-note"></iron-icon> MUSIC 
+        </paper-item>
+        <hr>
+        <paper-item class="drawerItem" on-tap="navigateBrowseProjects"> 
+          <iron-icon class="drawerIcon" icon="av:library-books"></iron-icon> BROWSE PROJECTS
+        </paper-item>
+        <paper-item class="drawerItem" on-tap="navigateBrowseMusic"> 
+          <iron-icon class="drawerIcon" icon="av:library-music"></iron-icon> BROWSE MUSIC
+        </paper-item>
+        <hr>
+        <paper-item class="drawerItem" on-tap="navigateResume"> 
+          <iron-icon class="drawerIcon" icon="work"></iron-icon> RESUME / CV
+        </paper-item>
+      </paper-listbox>
+    </app-drawer>
+
+    <!-- Right Drawer-->
+    <app-drawer id="rightdrawer" align="end" swipe-open>
+      <div style="height: 100%; overflow: auto; background-color: #FFF; padding: 15px">
+        <div id="drawerImageContainer">
+          <br>
+          <br>
+          <img id="pic" src="[[importPath]]images/pic.png"> </img>
+          <br>
+          <div id="drawerText"> Willian Hua </div>
+          <h5> Software Developer </h5>
+          <hr>
+        </div> 
+        <paper-listbox>
+          <paper-item class="drawerItem" on-tap="navigateEmail">
+            <iron-icon class="drawerIcon" icon="mail" style="color: red;" ></iron-icon>
+            huawillian@gmail.com
+          </paper-item>
+          <paper-item class="drawerItem" on-tap="navigateGithub"> 
+            <social-media-icons class="drawerIcon" icon="github" size="25"></social-media-icons>
+            github.com/huawillian
+          </paper-item>
+          <paper-item class="drawerItem" on-tap="navigateLinkedIn">
+            <social-media-icons class="drawerIcon" icon="linkedin" size="25"></social-media-icons>
+            linkedin.com/in/willian-hua-0071b465
+            </paper-item>
+          <paper-item class="drawerItem" on-tap="navigateSoundCloud"> 
+            <iron-icon class="drawerIcon" icon="image:music-note" style="background-color: #FF5722; border-radius: 50%; color: white !important;"></iron-icon>
+            soundcloud.com/willian-hua
+          </paper-item>
+        </paper-listbox>
+      </div>
+    </app-drawer>
+
+    <!-- Content -->
+    <slot> </slot>
+
+    <!-- Footer -->
+    <my-footer> </my-footer>
+  </template>
+
+  <script>
+    class MyLayout extends Polymer.Element {
+      static get is() { return 'my-layout'; }
+      static get properties() {return {}; }
+      toggleLeftDrawer() { this.$.leftdrawer.toggle(); }
+      toggleRightDrawer() { this.$.rightdrawer.toggle(); }
+      closeLeftDrawer() { this.$.leftdrawer.close(); }
+      closeRightDrawer() { this.$.rightdrawer.close(); }
+      navigateHome() {window.location.href = "/#/home/"; }
+      navigateAbout() {window.location.href = "/#/about/"; } 
+      navigateDeveloper() {window.location.href = "/#/developer/"; } 
+      navigateMusic() {window.location.href = "/#/music/"; } 
+      navigateResume() {window.location.href = "/#/resume/"; } 
+      navigateBrowseProjects() {window.location.href = "/#/browse/projects/"; } 
+      navigateBrowseMusic() {window.location.href = "/#/browse/music/"; }
+      navigateEmail() {window.location.href = "mailto:huawillian@gmail.com"; } 
+      navigateGithub() {window.location.href = "https://www.github.com/huawillian"; } 
+      navigateLinkedIn() {window.location.href = "https://www.linkedin.com/in/willian-hua-0071b465"; }
+      navigateSoundCloud() {window.location.href = "https://www.soundcloud.com/willian-hua"; } 
+    }
+    window.customElements.define(MyLayout.is, MyLayout);
+  </script>
+</dom-module>

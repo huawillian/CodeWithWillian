@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/mp-slider/mp-slider.html">
+
+<dom-module id="project-showcase-carousel">
+  <template>
+    <style>
+        img {
+          filter:brightness(80%);
+        }
+    </style>
+    <mp-slider controls show-thumbs>
+        <div>
+            <img src="[[importPath]]images/otaku-beatdown.png" />
+            <mp-caption slider-header="Otaku Beatdown"
+                        slider-content="A Multiplayer Online Battle Arena (MOBA) ninja fighting style game">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="[[importPath]]images/barnland-security.png" />
+            <mp-caption slider-header="Barnland Security"
+                        slider-content="A Cardboard VR game focused on saving barnyard animals from alien UFOs">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="[[importPath]]images/league-of-love.png" />
+            <mp-caption slider-header="Why Is Everyone So Angry?"
+                        slider-content="3rd Prize Winner at Global AI Hackathon NYC 2017 - Public Speaking Evaluation Tool">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="http://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/0ripaipo7fgr7i15f8by.jpg" />
+            <mp-caption slider-header="Computer Science Capstone"
+                        slider-content="Automatic Transcription of Japanese Taiko Drumming Using the Microsoft Kinect ">
+            </mp-caption>
+        </div>
+    </mp-slider>
+  </template>
+
+  <script>
+    class ProjectShowcaseCarousel extends Polymer.Element {
+      static get is() { return 'project-showcase-carousel'; }
+      static get properties() { return {}; }
+    }
+    window.customElements.define(ProjectShowcaseCarousel.is, ProjectShowcaseCarousel);
+  </script>
+</dom-module>

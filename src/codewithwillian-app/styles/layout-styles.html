@@ -1,0 +1,89 @@
+<dom-module id="layout-styles">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --app-drawer-width: 300px;
+      }
+
+      app-toolbar {
+        background-color: #101010;
+        color: #fff;
+        z-index: 1;
+      }
+
+      paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      paper-icon-button + [main-title] {
+        margin-left: 0;
+      }
+
+      app-header {
+        @apply --layout-fixed-top;
+        color: #fff;
+        --app-header-background-rear-layer: {
+          background-color: #ef6c00;
+        };
+      }
+
+      app-drawer {
+        --app-drawer-scrim-background: rgba(0, 0, 0, 0.9);
+        --app-drawer-content-container: {
+          background-color: #000;
+        }
+        z-index: 2;
+      }
+
+      #logo {
+        margin-top: 3px;
+      }
+
+      .drawerItem {
+        cursor: pointer;
+        padding: 8px 16px;
+        text-align: left;
+      }
+
+      .drawerItem:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .drawerIcon {
+        margin-right: 8%;
+      }
+
+      #pic {
+        width:150px;
+        height:150px;
+        border-radius: 50%;
+      }
+
+      #drawerImageContainer {
+        text-align: center;
+      }
+
+      #drawerText {
+        padding-top: 20px;
+        font-size: 20px;
+      }
+
+      .toolbarButton {
+        background-color: rgb(10,10,10);
+        width: 50px;
+        height: 50px;
+        border: solid 1px #202020;
+        border-radius: 10%;
+      }
+
+      .toolbarButton:hover {
+        background-color: rgba(255,255,255, 0.1);
+      }
+
+      h5 {
+        margin: 5px;
+      }
+    </style>
+  </template>
+</dom-module>

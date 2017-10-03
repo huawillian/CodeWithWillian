@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
+<link rel="import" href="./styles/landing-styles.html">
+
+<dom-module id="my-landing-section">
+  <template>
+    <style include="landing-styles"></style>
+    <style> </style>
+
+      <div id="mainContent">
+        <div id="landingContent">
+          <div id="landingContainer">
+            <div id="landingTitle">  [[title]] </div>
+            <div id="landingSubtitle">  [[subtitle]] </div>
+          </div>
+        </div>
+        <div id="expandContainer">
+          <paper-icon-button id="expandButton" icon="expand-more"></paper-icon-button>
+        </div>
+        <iron-image id="backgroundImage" sizing="cover" preload fade src="[[imageUrl]]"> </iron-image>
+      </div>
+  </template>
+
+  <script>
+    class MyLandingSection extends Polymer.Element {
+      static get is() { return 'my-landing-section'; }
+      static get properties() {
+        return {
+          imageUrl: {
+            type: String,
+            value: 'http://wallpapercave.com/wp/mVcZwOP.jpg'
+          },
+          title: {
+            type: String,
+            value: 'The journey of a lifetime begins with a single step'
+          },
+          subtitle: {
+            type: String,
+            value: 'Hello there! My name is Willian Hua, and I am a web developer, games developer, musician, and music producer. Welcome to my personal website!'
+          }
+        };
+      }
+    }
+    window.customElements.define(MyLandingSection.is, MyLandingSection);
+  </script>
+</dom-module>

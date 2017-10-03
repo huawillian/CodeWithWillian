@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="./styles/content-styles.html">
+
+<dom-module id="my-content-section">
+  <template>
+    <style> </style>
+    <style include="content-styles"> </style>
+
+    <paper-card id="card" class="mainContentCards" elevation="0">
+      <h1 id="cardTitle"> {{title}}</h1>
+      <hr>
+      <h6 id="cardSubtitle"> {{subtitle}} </h6>
+      <slot id="cardContent"> </slot>
+      <div class="card-actions">
+        <template is="dom-if" if="{{isAction}}">
+            <paper-button raised on-click="navigate"> {{actionName}}</paper-button>
+        </template>
+      </div>
+    </paper-card>
+  </template>
+
+  <script>
+    class MyContentSection extends Polymer.Element {
+      static get is() { return 'my-content-section'; }
+      static get properties() {
+        return {
+          title:{
+            type: String,
+            value: "Card Title"
+          } ,
+          subtitle: {
+            type: String,
+            value: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+          } ,
+          isAction: {
+            type: String,
+            value: false
+          } ,
+          actionLink: {
+            type: String,
+            value: ""
+          } ,
+          actionName: {
+            type: String,
+            value: "Link"
+          }
+        };
+      }
+      navigate() {
+        console.log('navigate to ' + this.actionLink);
+        window.location.href = this.actionLink;
+      }
+    }
+    window.customElements.define(MyContentSection.is, MyContentSection);
+  </script>
+</dom-module>

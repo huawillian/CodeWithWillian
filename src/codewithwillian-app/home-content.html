@@ -1,0 +1,116 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="./my-landing-section.html">
+<link rel="import" href="./my-content-section.html">
+<link rel="import" href="./styles/home-styles.html">
+
+<dom-module id="home-content">
+  <template>
+    <style include="home-styles"></style>
+    <style> </style>
+
+    <my-landing-section title="The journey of a lifetime begins with a single step" subtitle="Hello there! My name is Willian Hua, and I am a web developer, games developer, musician, and music producer. Welcome to my personal website!" image-url="http://wallpapercave.com/wp/mVcZwOP.jpg"> </my-landing-section>
+
+    <div id="bodyContent">
+
+      <div id="profileContainer"> 
+        <div class="profileItems">
+          <div> 
+            <img id="profilepic1" src="[[importPath]]images/pic2.png">
+          </div>
+        </div>
+        <div class="profileItems">
+          <h1> About Me </h1>
+          <h3> Hi, my name is Willian, and I like to create new things, especially having to do with software and music. After I graduated from TCNJ in May 2015 with a Bachelors degree in Computer Science, I took a break to work on some side projects. I made this website to showcase the various things I have created. </h3>
+        </div>
+        <div class="profileItems">
+          <div style="width:100%; text-align: center"> 
+            <img id="profilepic2" src="[[importPath]]images/pic2.png">
+          </div>
+        </div>
+        <div id="cardContainer">
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="work" on-click="navigateResume"></paper-icon-button>
+              <h2> R E S U M E </h2>
+              <h5> Check my resume / cv page to see my resume / cv and download an offline copy. The online resume is updated. </h5>
+            </div>
+          </div>
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="account-circle" on-click="navigateAbout"></paper-icon-button>
+              <h2> A B O U T </h2>
+              <h5> Check my about page to see more of my interests, views on life, and history. See also how I came into my Christian faith. </h5>
+            </div>
+          </div>
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="code" on-click="navigateDeveloperg"></paper-icon-button>
+              <h2> C O D E  </h2>
+              <h5> Check my developer page to see my story in becoming a software developer and the different kinds of applications I've worked on.</h5>
+            </div>
+          </div>
+
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="image:music-note" on-click="navigateMusic"></paper-icon-button>
+              <h2> M U S I C </h2>
+              <h5> Check my music page to see my music interests as well as how I grew from musician to producer and from classical to contemporary. </h5>
+            </div>
+          </div>
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="av:library-music" on-click="navigateBrowseProjects"></paper-icon-button>
+              <h2> B R O W S E </h2>
+              <h5> Browse through an actively maintained list of music I've worked on. You can also check my SoundCloud channel "willian-hua". </h5>
+            </div>
+          </div>
+          <div class="cardItems">
+            <div class="cards">
+              <hr>
+              <paper-icon-button class="cardIcons" icon="apps" on-click="navigateBrowseMusic"></paper-icon-button>
+              <h2> B R O W S E </h2>
+              <h5> Browse through an actively maintained list of projects I've worked on. Some games I made in Unity can be played online through the project.</h5>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <my-content-section title="Personal Statement" subtitle="" is-action="true" action-link="/#/about/" action-name="About Me">
+        <p class="main-content-p"> To succeed in any endeavor, one must aspire to learn far beyond an action's scope and then dedicate, commit to accomplishing that aspiration. One must have the heart of student and have a life-long commitment to learning. </p>
+        <img class="main-content-img" src='https://i.ytimg.com/vi/fbpK5RPCpUg/maxresdefault.jpg'>
+        <p class="main-content-p"> When I was in college, I aspired to learn a skill set that would allow me to create anything I wanted to create. During my spring and winter breaks, I freqently learned new software development tools. Now, I am able to develop applications on many platforms including Android, iOS, and Web. Also, with various my research experiences, I am able to greatly analyze and dissect any problem while coming up with an applicable well-defined solution. </p>
+        <p class="main-content-p"> However, I was not able to do all these great things alone. I want to take a moment and thank my fellowship at CEMC for their continuing support and also to thank God for blessing me with these great talents. </p>
+        <img class="main-content-img" src="[[importPath]]images/fellowship.jpg">
+        <p class="main-content-p"> "The LORD is my strength and my shield; my heart trusted in him, and I am helped: therefore my heart greatly rejoiceth; and with my song will I praise him." (Psalms 28:7) </p>
+        <p class="main-content-p"> The Lord gives me strength. The lord knows my weaknesses and helps me overcome them. For as long as I trust in the Lord and have faith in him, I am content. I will continue to praise him and lift up my brothers and sisters in Christ with the musical talents he has given me. I pray for the Lord's guidance and the strength to pursue my career goals.</p>
+        <p class="main-content-p"> Thank you for reading about me. You can find out some more about me by going to my 'About Section'.</p>
+      </my-content-section>
+
+    </div>
+  </template>
+
+  <script>
+    class HomeContent extends Polymer.Element {
+      static get is() { return 'home-content'; }
+      static get properties() {return {}; }
+      navigateAbout() {window.location.href = "/#/about/"; } 
+      navigateDeveloper() {window.location.href = "/#/developer/"; } 
+      navigateMusic() {window.location.href = "/#/music/"; } 
+      navigateResume() {window.location.href = "/#/resume/"; } 
+      navigateBrowseProjects() {window.location.href = "/#/browse/projects/"; } 
+      navigateBrowseMusic() {window.location.href = "/#/browse/music/"; } 
+    }
+    window.customElements.define(HomeContent.is, HomeContent);
+  </script>
+</dom-module>

@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="./styles/browse-card-styles.html">
+
+<dom-module id="my-browse-card">
+<template>
+  <style> </style>
+  <style include="browse-card-styles"></style>
+
+  <paper-card id="card" on-click="navigateToUrl">
+    <div class="blur" style$="background-image: url('{{imageUrl}}')"> </div>
+    <div class="card-content">
+      <h2> {{title}} </h2>
+      <hr>
+      <h5> {{subtitle}} </h5>
+    </div>
+  </paper-card>
+
+</template>
+
+  <script>
+    class MyBrowseCard extends Polymer.Element {
+      static get is() { return 'my-browse-card'; }
+
+      static get properties() {
+        return {
+          title : {
+            type: String,
+            value: "T I T L E O F C A R D"
+          } ,
+          subtitle : {
+            type: String,
+            value: "Subtitle of the card. Keep it short."
+          } ,
+          imageUrl : {
+            type: String,
+            value: "http://lorempixel.com/output/abstract-q-c-640-480-6.jpg"
+          } ,
+          url: {
+            type: String,
+            value: "/"
+          } ,
+          type: {
+            type: String,
+            value: "projects"
+          }
+        };
+      }
+
+      navigateToUrl() {
+        window.location.href = "/#/browse/" + this.type + "/" + this.title;
+      }
+    }
+    window.customElements.define(MyBrowseCard.is, MyBrowseCard);
+  </script>
+</dom-module>

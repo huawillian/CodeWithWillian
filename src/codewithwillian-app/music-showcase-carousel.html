@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/mp-slider/mp-slider.html">
+
+<dom-module id="music-showcase-carousel">
+  <template>
+    <style>
+        img {
+          filter:brightness(80%);
+        }
+    </style>
+    <mp-slider controls show-thumbs>
+        <div>
+            <img src="https://i.stack.imgur.com/Y2uZ2.jpg" />
+            <mp-caption slider-header="Orange - Your Lie In April"
+                        slider-content="Most Recent Piano Cover">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="https://ak0.picdn.net/shutterstock/videos/9199880/thumb/4.jpg" />
+            <mp-caption slider-header="Hero's Sacrifice"
+                        slider-content="First Complete Original Orchestral Arrangement">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="https://media4lifeministries.files.wordpress.com/2012/01/christian-love.jpg" />
+            <mp-caption slider-header="Love Is Patient"
+                        slider-content="Duet piece made for a wedding">
+            </mp-caption>
+        </div>
+        <div>
+            <img src="https://i.ytimg.com/vi/Ffxgu0_X3cE/maxresdefault.jpg" />
+            <mp-caption slider-header="Improv1"
+                        slider-content="Piano Improvisation">
+            </mp-caption>
+        </div>
+    </mp-slider>
+  </template>
+
+  <script>
+    class MusicShowcaseCarousel extends Polymer.Element {
+      static get is() { return 'music-showcase-carousel'; }
+      static get properties() { return {}; }
+    }
+    window.customElements.define(MusicShowcaseCarousel.is, MusicShowcaseCarousel);
+  </script>
+</dom-module>

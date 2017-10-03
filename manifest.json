@@ -1,0 +1,17 @@
+{
+  "name": "Willian Hua",
+  "short_name": "Willian Hua",
+  "start_url": "https://polymer-website.firebaseapp.com",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "150x150",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#E65100" ,
+  "background_color": "#202020",
+  "start_url": "/?homescreen=1",
+  "scope": "/"
+}

@@ -1,0 +1,254 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/paper-search-input/paper-search-input.html">
+
+<link rel="import" href="./my-content-section.html">
+<link rel="import" href="./my-browse-card.html">
+<link rel="import" href="./project-showcase-carousel.html">
+<link rel="import" href="./music-showcase-carousel.html">
+<link rel="import" href="./styles/browse-styles.html">
+
+<dom-module id="browse-content">
+  <template>
+    <style include="browse-styles"> </style>
+    <style> </style>
+
+    <firebase-document
+      path="/Music"
+      data="{{musicData}}">
+    </firebase-document>
+
+    <firebase-document
+      path="/Projects"
+      data="{{projectData}}">
+    </firebase-document>
+
+    <div id="bodyContent">
+      <template is="dom-if" if="{{isBrowse}}">
+         <template is="dom-if" if="{{!isMusic}}">
+          <div id="projectsCardContainer">
+            <h1> Browse Projects </h1>
+            <project-showcase-carousel> </project-showcase-carousel>
+            <hr>
+            <paper-search-input class="colors" on-value-changed="searchProjectChanged">
+              <span> Search Projects...</span>
+            </paper-search-input>
+            <h3> Search Results: [[filteredProjectArr.length]]</h3>
+            <div id="cardContainer">
+              <template is="dom-repeat" items="{{filteredProjectArr}}">
+                <my-browse-card title="[[item.Title]]" subtitle="[[item.Subtitle]]" image-url="[[item.image]]" type="[[browseType]]"> </my-browse-card>
+              </template>
+            </div>
+          </div>
+         </template>
+         <template is="dom-if" if="{{isMusic}}">
+          <div id="projectsCardContainer">
+            <h1> Browse Music </h1>
+            <music-showcase-carousel> </music-showcase-carousel>
+            <hr>
+            <paper-search-input class="colors" on-value-changed="searchMusicChanged">
+              <span> Search Music...</span>
+            </paper-search-input>
+            <h3> Search Results: [[filteredMusicArr.length]]</h3>
+            <div id="cardContainer">
+              <template is="dom-repeat" items="{{filteredMusicArr}}">
+                <my-browse-card title="[[item.Title]]" subtitle="[[item.Subtitle]]" image-url="[[item.image]]" type="[[browseType]]"> </my-browse-card>
+              </template>
+            </div>
+          </div>
+         </template>
+      </template>
+
+      <iron-collapse id="sc">
+        <div style="text-align: center; ">
+          <iframe id="widget" width="75%" height="100%" scrolling="no" frameborder="no" src="{{selectedCard.url}}"></iframe>
+        </div>
+      </iron-collapse>
+
+      <iron-collapse id="collapse">
+        <my-content-section id="contentSection" title="[[selectedCard.Title]]" subtitle="[[selectedCard.Subtitle]]" is-action="true" action-link="/#/browse/[[browseType]]" action-name="Browse [[browseType]]">
+        </my-content-section>
+      </iron-collapse>
+      
+    </div>
+
+  </template>
+
+  <script>
+    class BrowseContent extends Polymer.Element {
+      static get is() { return 'browse-content'; }
+
+      static get properties() {
+        return {
+          route: {
+            type: Object,
+            observer: "routeChanged"
+          },
+          browseType: {
+            type: String,
+            value: "projects",
+            observer: "typeChanged"
+          },
+          browseId: {
+            type: String, 
+            value: "none"
+          },
+          isBrowse: {
+            type: Boolean,
+            value: false
+          },
+          isMusic: {
+            type: Boolean,
+            value: true
+          },
+          musicData: {
+            value: null,
+            observer: "musicChanged"
+          },
+          projectData: {
+            value: null,
+            observer: "projectChanged"
+          },
+          musicArr: {
+            type: Array,
+            value: []
+          },
+          projectArr: {
+            type: Array,
+            value: []
+          },
+          filteredMusicArr: {
+            type: Array,
+            value: []
+          },
+          filteredProjectArr: {
+            type: Array,
+            value: []
+          },
+          selectedCard: {
+            type: Object,
+            value: {},
+            observer: "selectedCardChanged"
+          }
+        };
+      }
+
+      routeChanged(v) {
+        if(v.path == null) return;
+
+        this.trypauseSCWidget();
+        this.$.sc.hide();
+
+        let pathArr = v.path.split("/").filter(v => v != "");
+        
+        if(pathArr.length == 0) {
+          return;
+        } else if(pathArr.length == 1) {
+          this.browseType = pathArr[0];
+          this.isBrowse = true;
+          this.$.collapse.hide();
+        } else if(pathArr.length == 2) {
+          this.browseType = pathArr[0];
+          this.browseId = pathArr[1];
+          this.isBrowse = false;
+          this.$.collapse.show();
+          if(this.projectData != null && this.musicData != null) this.setSelectedCard();
+        }
+
+
+      }
+
+      musicChanged(v) {
+        if(v == null) return;
+        let newArr = [];
+        Object.keys(v).forEach(k => newArr.push(v[k]));
+        this.set("musicArr", newArr);
+        this.set("filteredMusicArr", newArr);
+        this.setSelectedCard();
+      }
+
+      typeChanged(v) {
+        v == "projects" ? this.isMusic = false: this.isMusic = true;
+      }
+
+      projectChanged(v) {
+        if(v == null) return;
+        let newArr = [];
+        Object.keys(v).forEach(k => newArr.push(v[k]));
+        this.set("projectArr", newArr);
+        this.set("filteredProjectArr", newArr);
+        this.setSelectedCard();
+      }
+
+      setSelectedCard() {
+        if(this.projectData == null || this.musicData == null) return;
+        if(this.browseType == "projects") {
+          this.set("selectedCard", this.projectData[this.browseId]);
+        } else if(this.browseType == "music"){
+          this.set("selectedCard", this.musicData[this.browseId]);
+          this.$.sc.show();
+        }
+      }
+
+      selectedCardChanged(v) {
+        if(!!v && Array.isArray(v.content)) {
+          this.emptyContent();
+          v.content.forEach(c => this.parseContent(c));
+        }
+      }
+
+      emptyContent() {
+        Polymer.dom(this.root).querySelector('#contentSection').innerHTML = "";
+      }
+
+      parseContent(item)
+      {
+          if(item.type == "img")
+          {
+            var tempImg = document.createElement("img");
+            tempImg.className += " main-content-img";
+            tempImg.setAttribute("src", item.url);
+            Polymer.dom(this.root).querySelector('#contentSection').appendChild(tempImg);
+          }
+          if(item.type == "p")
+          {
+            var tempP = document.createElement("p");
+            tempP.className += " main-content-p";
+            tempP.innerHTML = item.text;
+            Polymer.dom(this.root).querySelector('#contentSection').appendChild(tempP);
+          }
+      }
+
+      trypauseSCWidget()
+      {
+        try {
+          var iframeElement = Polymer.dom(this.root).querySelector("#widget");
+          //console.log('try pause widget', iframeElement);
+          //var iframeElementID = iframeElement.id;
+          var widget1         = SC.Widget(iframeElement);
+          //var widget2         = SC.Widget(iframeElementID);
+          widget1.pause();
+        }
+        catch(err) {
+          //console.log(err);
+        }
+      }
+
+      searchProjectChanged(v) {
+        if(v.detail.value == undefined) return;
+        let search = v.detail.value.toLowerCase();
+        let newProjectArr = this.projectArr.filter(val => val.Title.toLowerCase().includes(search));
+        this.set("filteredProjectArr", newProjectArr);
+      }
+
+      searchMusicChanged(v) {
+        if(v.detail.value == undefined) return;
+        let search = v.detail.value.toLowerCase();
+        let newMusicArr = this.musicArr.filter(val => val.Title.toLowerCase().includes(search));
+        this.set("filteredMusicArr", newMusicArr);
+      }
+    }
+    window.customElements.define(BrowseContent.is, BrowseContent);
+  </script>
+</dom-module>
