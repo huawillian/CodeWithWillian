@@ -1,6 +1,10 @@
-# \<codewithwillian\>
+# Code With Willian
 
-codewithwillian website 2.0
+codewithwillian website using Polymer 2.0
+
+# Release
+
+https://codewithwillian.com/
 
 ## Install the Polymer-CLI
 
