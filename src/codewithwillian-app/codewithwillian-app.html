@@ -2,6 +2,10 @@
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 
 <link rel="import" href="./my-layout.html">
 <link rel="import" href="./my-landing-section.html">
@@ -15,7 +19,15 @@
 
 <dom-module id="codewithwillian-app">
   <template>
-    <style> </style>
+    <style>
+      #expandButton {
+      background-color: white;
+      --paper-icon-button_-_width: 60px;
+      --paper-icon-button_-_height: 40px;
+      top: 40px;
+      border: 3px solid #ff5500;
+      }
+    </style>
 
     <!-- app-location binds to the app's URL -->
     <app-location route="{{route}}" use-hash-as-path></app-location>
@@ -32,10 +44,18 @@
         <developer-content name="developer"> </developer-content>
         <music-content name="music"> </music-content>
         <resume-content name="resume"> </resume-content>
-        <browse-content name="browse" route="[[subroute]]"> </browse-content>
+        <browse-content id="browse" name="browse" route="[[subroute]]"> </browse-content>
       </iron-pages>
-
     </my-layout>
+
+    <!-- bottom sc widget -->
+     <iron-collapse id="sc">
+        <div style="margin-bottom: -10px; position: fixed; bottom: 0; z-index: 1; text-align: center; width: 100%">
+          <paper-icon-button on-tap="hideWidget" id="expandButton" icon="expand-more"></paper-icon-button>
+          <iframe id="widget" width="100%" height="110" scrolling="no" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/303315318&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=true"></iframe> 
+        </div>
+      </iron-collapse>
+
   </template>
 
   <script>
@@ -61,6 +81,34 @@
         window.scrollTo(0, 0);
         this.$.myLayout.closeLeftDrawer();
         this.$.myLayout.closeRightDrawer();
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this.addEventListener('change-song', e => {
+          this.$.widget.src = e.detail;
+          this.$.sc.show();
+        });
+      }
+
+      hideWidget() {
+        this.$.sc.hide();
+        this.trypauseSCWidget();
+      }
+
+      trypauseSCWidget()
+      {
+        try {
+          var iframeElement = Polymer.dom(this.root).querySelector("#widget");
+          //console.log('try pause widget', iframeElement);
+          //var iframeElementID = iframeElement.id;
+          var widget1         = SC.Widget(iframeElement);
+          //var widget2         = SC.Widget(iframeElementID);
+          widget1.pause();
+        }
+        catch(err) {
+          //console.log(err);
+        }
       }
     }
 

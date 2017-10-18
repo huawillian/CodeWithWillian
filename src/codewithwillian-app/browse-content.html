@@ -60,12 +60,6 @@
          </template>
       </template>
 
-      <iron-collapse id="sc">
-        <div style="text-align: center; ">
-          <iframe id="widget" width="75%" height="100%" scrolling="no" frameborder="no" src="{{selectedCard.url}}"></iframe>
-        </div>
-      </iron-collapse>
-
       <iron-collapse id="collapse">
         <my-content-section id="contentSection" title="[[selectedCard.Title]]" subtitle="[[selectedCard.Subtitle]]" is-action="true" action-link="/#/browse/[[browseType]]" action-name="Browse [[browseType]]">
         </my-content-section>
@@ -137,9 +131,6 @@
       routeChanged(v) {
         if(v.path == null) return;
 
-        this.trypauseSCWidget();
-        this.$.sc.hide();
-
         let pathArr = v.path.split("/").filter(v => v != "");
         
         if(pathArr.length == 0) {
@@ -187,7 +178,8 @@
           this.set("selectedCard", this.projectData[this.browseId]);
         } else if(this.browseType == "music"){
           this.set("selectedCard", this.musicData[this.browseId]);
-          this.$.sc.show();
+
+         this.dispatchEvent(new CustomEvent('change-song', {detail: this.selectedCard.url, bubbles: true, composed: true }));
         }
       }
 
@@ -220,20 +212,7 @@
           }
       }
 
-      trypauseSCWidget()
-      {
-        try {
-          var iframeElement = Polymer.dom(this.root).querySelector("#widget");
-          //console.log('try pause widget', iframeElement);
-          //var iframeElementID = iframeElement.id;
-          var widget1         = SC.Widget(iframeElement);
-          //var widget2         = SC.Widget(iframeElementID);
-          widget1.pause();
-        }
-        catch(err) {
-          //console.log(err);
-        }
-      }
+
 
       searchProjectChanged(v) {
         if(v.detail.value == undefined) return;
